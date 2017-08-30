@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Time    : 2017-08-30 22:14
 # Author  : MrFiona
-# File    : _bisect.py
+# File    :summary _bisect.py
 # Software: PyCharm
 
 
