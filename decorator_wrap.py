@@ -30,7 +30,7 @@ def decorator_func(func):
 def test_func():
     a = 1
     print 'this is func.'
-    
+
 print '\033[31m1、最简单的装饰函数的装饰器\033[0m'
 test_func()
 print '\033[31m1、最简单的装饰函数的装饰器\033[0m'
@@ -188,8 +188,8 @@ class mylocker:
 
 class lockerex(mylocker):
     @staticmethod
-    # def acquire():
-    #     print("lockerex.acquire() called.")
+    def acquire():
+        print("lockerex.acquire() called.")
 
     @staticmethod
     def unlock():
@@ -235,3 +235,49 @@ print(a.myfunc2(1, 2))
 print(a.myfunc2(3, 4))
 print '\033[31m7、装饰器带有参数的装饰器\033[0m'
 # todo ********************* 7、带有类方法参数的装饰器并对同一个函数应用多个装饰器 **********************
+
+
+
+# todo ********************************* 8、一个多兼容种情况的装饰器 **********************************
+# todo 装饰器当传进参数为字符串和非字符串两种情况分别做处理
+def log(obj):
+    print type(obj)
+    if isinstance(obj,str):
+        text=obj
+        def decorator(func):
+            @wraps(func)
+            def wrapper(*args, **kw):
+                print 'begin1 %s %s():' % (text,func.__name__)
+                func(*args, **kw)
+                print 'args: ', args
+                print 'kwargs: ', kw
+                print 'end1 %s %s():' % (text,func.__name__)
+            return wrapper
+        return decorator
+    else:
+        func=obj
+        print func
+        @wraps(func)
+        def wrapper(*args, **kw):
+            print 'begin2 %s():' % (func.__name__)
+            func(*args, **kw)
+            print 'args: ', args
+            print 'kwargs: ', kw
+            print 'end2 %s():' % (func.__name__)
+        return wrapper
+
+
+@log
+def my_test1(ID,student='MrFiona'):
+    print 'my_test1 run'
+
+@log('hello')
+def my_test(ID,student='MrFiona'):
+    print 'my_test run'
+
+
+print '\033[36m8、一个多兼容种情况的装饰器\033[0m'
+my_test1(ID=1024, student='John')
+my_test(ID=1024, student='John')
+print '\033[36m8、一个多兼容种情况的装饰器\033[0m'
+# todo ********************************* 8、一个多兼容种情况的装饰器 **********************************
