@@ -266,7 +266,7 @@ def log(obj):
             print 'kwargs: ', kw
             print 'obj:', obj, '\t', obj.__name__, '\t', type(obj)
             print 'end2 %s():' % (func.__name__)
-        return wrapper
+        return wrappertr
 
 
 @log
