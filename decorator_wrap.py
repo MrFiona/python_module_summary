@@ -251,6 +251,7 @@ def log(obj):
                 func(*args, **kw)
                 print 'args: ', args
                 print 'kwargs: ', kw
+                print 'obj:', obj, '\t', type(obj)
                 print 'end1 %s %s():' % (text,func.__name__)
             return wrapper
         return decorator
@@ -263,6 +264,7 @@ def log(obj):
             func(*args, **kw)
             print 'args: ', args
             print 'kwargs: ', kw
+            print 'obj:', obj, '\t', obj.__name__, '\t', type(obj)
             print 'end2 %s():' % (func.__name__)
         return wrapper
 
