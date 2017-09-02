@@ -500,3 +500,9 @@ def combinations_with_replacement_2(iterable, r):
     for indices in itertools.product(range(n), repeat=r):
         if sorted(indices) == list(indices):
             yield tuple(pool[i] for i in indices)
+
+
+
+import traceback
+
+traceback.extract_stack()
