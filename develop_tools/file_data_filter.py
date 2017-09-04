@@ -41,8 +41,8 @@ def help_msg():
     print("\t -o outputfilepath [必输，默认为 inputfilepath.dist ]")
     print("\t -F 'FS'           [可选，要去除注释行开始标志，默认为# ]")
     print("\t -b                [可选，是否删除空行,默认不剔除空行 ]")
-    print '例如: python file_data_filter.py -f input_file -o -F -b'
-    print '输出文件已经默认指定[ 原文件名+.dist ]只需要输入 -o 即可而且是必须输入'
+    print '例如: python file_data_filter.py -f input_file -F -b'
+    print '输出文件已经默认指定[ 原文件名+.dist ]'
     print '-F 和 -b可选'
     print '\033[31m******************** description  *******************************\033[0m'
     sys.exit(0)
@@ -55,13 +55,13 @@ def main():
 
     strUsage = "Usage: %prog [option] args"
     parser = argparse.ArgumentParser(usage=strUsage, epilog="And that's how you'd to do", version='1.0', description='A script that used to delete lines that begin with the specified string')
-    parser.add_argument('-f', '--infile', action='store', dest='input_file', help='输入文件路径,必须输入')
-    parser.add_argument('-o', '--outfile', action='store_const', dest='output_file', const=os.path.split(__file__)[1] + '.dist', help='输出文件路径,必须输入，默认是：原文件+.dist')
+    parser.add_argument('-f', '--infile', action='store', dest='input_file', type=str, help='输入文件路径,必须输入')
+    parser.add_argument('-o', '--outfile', dest='output_file', default=os.path.split(__file__)[1] + '.dist', type=str, help='输出文件路径,非必须输入，默认是：原文件+.dist')
     parser.add_argument('-F', '--FS', action='store_true', dest='delete_annotation_flag', help='是否去除注释行开始标记, 非必须输入, 默认注释标记：#')
     parser.add_argument('-d', '--delete_blank', action='store_true', dest='delete_blank_flag', help='是否删除空行标记，非必须输入，默认是：False不删除')
     parser.add_argument('--foo', help='是否删除空行标记，非必须输入，默认是：False不删除')
 
-    # opts= parser.parse_args('-f ../decorator_wrap.py -o'.split())
+    # opts= parser.parse_args('-f ../decorator_wrap.py'.split())
     try:
         opts= parser.parse_args()
         print '\033[33m******************** 相关参数  *******************************\033[0m'
