@@ -102,6 +102,16 @@ class TestOperatorOverload(object):
 # todo 用内置属性装饰器property将类方法转变为类属性
 
 
+class TestStrAndRepr:
+    def __init__(self, name, address):
+        self.name = name
+        self.address = address
+
+    def __str__(self):
+        return '(TestStrAndRepr: %s, %s)' % (self.name, self.address)
+
+    #todo 简单的方式定义__repr__ 或者单独定义__repr__
+    __repr__ = __str__
 
 
 if __name__ == '__main__':
@@ -122,4 +132,6 @@ if __name__ == '__main__':
     test1['set'] = 'value'
     print test1['set']
 
+    test3 = TestStrAndRepr('Bob', '西安')
+    print test3
 
