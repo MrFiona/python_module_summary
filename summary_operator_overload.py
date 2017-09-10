@@ -119,5 +119,7 @@ if __name__ == '__main__':
     test1.fee = 'fee helqwereg'
     print test1.fee
 
+    test1['set'] = 'value'
+    print test1['set']
 
 
