@@ -26,6 +26,7 @@ with open('test.txt', 'rb') as f:
 print data
 
 
+
 with open('test.txt1', 'wb') as f:
     f.write(pickle.dumps(data))
 
