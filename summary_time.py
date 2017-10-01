@@ -7,13 +7,18 @@
 
 
 
+#epoch 格林威治天文时间
+
 import time
 
 print '\033[35m******************************************************************************************************\033[0m'
 print '\033[36mtime的接口如下所示:\033[0m\t'
 print
-print '\033[31m将当前的时间转化为自epoch时间起点的秒:\ttime.time():\t\033[0m', time.time()
-print '\033[31m将当前的时间转化为自epoch时间起点的元祖:\ttime.gmtime(0):\t\033[0m', time.gmtime(0)
+print '\033[31m将当前的时间用自epoch时间起点的秒表示:\ttime.time():\t\033[0m', time.time()
+print
+
+print '\033[31mepoch时间起点的元祖表示:\ttime.gmtime(0):\t\033[0m', time.gmtime(0)
+print '\033[31m将epoch时间起点的小数秒转化为UTC时间的字符串表示:\ttime.asctime(time.gmtime(0):\t\033[0m', time.asctime(time.gmtime(0))
 print
 
 print '\033[34m将当前时间的小数秒转化为当前的UTC时间的字符串表示:\ttime.asctime(time.gmtime(time.time())):\t\033[0m', time.asctime(time.gmtime(time.time()))
