@@ -37,6 +37,8 @@ print '\033[32mepoch时间起点的元祖表示:\ttime.localtime(time.time()):\t
 print time.mktime(time.localtime(time.time()))
 print '\033[35m******************************************************************************************************\033[0m\n'
 
+print time.clock()
+print '将当前时间的小数秒转化为当前的epoch时间的字符串表示:time.ctime()等价于time.asctime(time.localtime(time.time()))\t', time.ctime()
 
 
 
