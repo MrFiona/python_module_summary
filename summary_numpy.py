@@ -32,3 +32,11 @@ array_one = np.ones(3, dtype=np.int)
 array_one_1 = np.ones((3,4), dtype=np.int)
 print array_one
 print array_one_1
+
+array_empty = np.empty(3)
+array_empty_1 = np.empty((3,4), dtype=np.int)
+#todo 不指定数据类型则默认是float类型,数据则是浮点型随机数据
+array_empty_2 = np.empty((3,4))
+print array_empty
+print array_empty_1
+print array_empty_2
