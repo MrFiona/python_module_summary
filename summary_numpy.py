@@ -92,3 +92,29 @@ print 'test_array[1, :][1:]:', test_array[1, :][1:]
 print 'test_array[1, :][0]:', test_array[1, :][0]
 print 'test_array[1, :]:', test_array[1, :]
 print 'test_array[1][:]:', test_array[1][:]
+
+#todo ndarray-布尔类型索引
+#todo numpy中不能使用过python的and、or、not操作，使用逻辑与(&)，逻辑或(|)，逻辑非(~)来替换
+names = np.array(['Jeff', 'Tom', 'John', 'Lily'])
+scores = np.array([[94, 78, 91, 67],
+                   [89, 70, 98, 100],
+                   [80, 79, 82, 92],
+                   [100, 59, 93, 95]])
+classes = np.array([u'语文', u'英语', u'物理', u'数学'])
+print scores[names == 'Jeff']
+print scores[names == 'Jeff'].reshape((-1,))[classes == u'物理']
+print scores[(names == 'Jeff') | (names == 'Lily')]
+print scores[(names != 'Jeff') & (names != 'Lily') & (names != 'John')]
+
+#todo ndarray-花式索引
+array = np.arange(32).reshape(8, 4)
+print array, type(array)
+#todo 获取第0、3、5行的数据
+print '获取第0、3、5行的数据:\n', array[[0, 3, 5]]
+#todo 获取第(0, 0)，(3, 3)，(5, 3)这三个索引位置的数据
+print '获取第(0, 0)，(3, 3)，(5, 3)这三个索引位置的数据:', array[[0,3,5],[0,3,3]]
+#todo 获取第0、3、5行的第0、2、3列的数据
+print '获取第0、3、5行的第0、2、3列的数据:', array[[0,3,5]].T[[0,2,3]].T #通过转置矩阵实现
+print '获取第0、3、5行的第0、2、3列的数据:', array[np.ix_([0,3,5],[0,2,3])]
+#todo np.ix_函数会产生一个索引器
+print 'np.ix_函数会产生一个索引器:', np.ix_([0,3,5],[0,2,3])
