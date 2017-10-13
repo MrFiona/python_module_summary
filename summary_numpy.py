@@ -13,3 +13,12 @@ import numpy as np
 array_1 =  np.arange(6)
 x = array_1.reshape((2,3))
 print x
+
+#todo arange类似于python的range函数
+array_2 = np.arange(1, 10, 2, dtype=np.float)
+print array_2
+
+print '维度数量：', x.ndim
+print '数组的形状：', x.shape
+print '数组的元素类型：', x.dtype
+print '数组的元素数量：', x.size
