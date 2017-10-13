@@ -53,3 +53,14 @@ print array_zeros_2
 print x.dtype
 change_x = x.astype(np.float)
 print change_x.dtype
+
+#todo reshape修改数组形状，-1代表当前维度的元素个数，自动计算
+reshape_array_3 = array_3.reshape(4,-1)
+print reshape_array_3
+
+b = np.array([[0, 1], [2, 3]])
+m = np.array([[0, 1], [2, 3]])
+b.resize((2,1))
+m.resize((2,3))
+print b
+print m
