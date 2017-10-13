@@ -40,3 +40,16 @@ array_empty_2 = np.empty((3,4))
 print array_empty
 print array_empty_1
 print array_empty_2
+
+array_zeros = np.zeros(3)
+array_zeros_1 = np.zeros((3,4), dtype=np.int)
+#todo 不指定数据类型则默认是float类型
+array_zeros_2 = np.zeros((3,4))
+print array_zeros
+print array_zeros_1
+print array_zeros_2
+
+#todo 改变已有数组的数据类型
+print x.dtype
+change_x = x.astype(np.float)
+print change_x.dtype
