@@ -64,3 +64,31 @@ b.resize((2,1))
 m.resize((2,3))
 print b
 print m
+
+#todo 矩阵的乘积 其中一个矩阵的行等于另一个矩阵的列
+m = np.arange(1, 12, 2)
+m = m.reshape((2,3))
+print 'm:', m
+
+n = np.arange(2, 14, 2, dtype=np.float)
+n = n.reshape((3,2))
+print 'n:', n
+print 'np.dot(m, n):', np.dot(m, n)
+
+#todo ndarray-多维数组的索引
+test_array = np.array([[[2, 3, 4, 5],
+                        [1, 3, 4, 9]],
+                       [[0, 3, 4, 8],
+                        [2, 4, 9, 4]],
+                       [[1, 4, 5, 8],
+                        [2, 5, 6, 8]],
+                       [[2, 3, 6, 8],
+                        [3, 4, 8, 9]]])
+print 'test_array[1]:', test_array[1]
+print 'test_array[1][0]:', test_array[1][0]
+print 'test_array[1][0][1:3]:', test_array[1][0][1:3]
+print 'test_array[1, :, 1:3]:', test_array[1, :, 1:3]
+print 'test_array[1, :][1:]:', test_array[1, :][1:]
+print 'test_array[1, :][0]:', test_array[1, :][0]
+print 'test_array[1, :]:', test_array[1, :]
+print 'test_array[1][:]:', test_array[1][:]
