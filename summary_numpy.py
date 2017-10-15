@@ -24,6 +24,21 @@ print '\033[32m数组的形状：\033[0m', x.shape
 print '\033[32m数组的元素类型：\033[0m', x.dtype
 print '\033[32m数组的元素数量：\033[0m', x.size
 
+#todo linspace 通过开始值和终止值和元素个数(默认是50)来创建一个一维数组,数组的数据元素符合等差数列,可以通过endpoint关键字指定是否包含终值，默认包含
+#todo linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
+array_linspace1 = np.linspace(1, 10, num=5, endpoint=False, retstep=False)
+array_linspace2 = np.linspace(1, 10, num=5, endpoint=True, retstep=True)
+array_linspace3 = np.linspace(1, 10, num=5, endpoint=True, retstep=False)
+array_linspace4= np.linspace(1, 10, num=5, endpoint=True, retstep=False, dtype=np.int)
+print '\033[35marray_linspace1:\033[0m', array_linspace1
+print '\033[35marray_linspace2:\033[0m', array_linspace2
+print '\033[35marray_linspace3:\033[0m', array_linspace3
+print '\033[35marray_linspace4:\033[0m', array_linspace4
+
+#todo 同linspace，不过创建的是等比数列, logspace(start, stop, num=50, endpoint=True, base=10.0, dtype=None)
+array_logspace = np.logspace(2, 3, num=4, base=2, endpoint=True)
+print '\033[36marray_logspace:\033[0m', array_logspace
+
 array_3 = np.array(range(4, 20, 2), dtype=np.int)
 array_4 = np.array([[1,2,324], [23,45,76]])
 print '\033[32marray_3:\033[0m', array_3
@@ -123,3 +138,4 @@ print 'np.ix_函数会产生一个索引器:', np.ix_([0,3,5],[0,2,3])
 #todo 数组的转置是指将shape进行重置操作，并将其值重置为原始shape元祖的倒置，比如原始的shape值为：(2,3,4),转置后的新元祖shape值为（4,3,2）
 #todo 对于二维数组而言(矩阵)数组的转置其实就是矩阵的的转置
 #todo 可以通过调用数组的transpose函数或者T属性进行数组转置操作
+
