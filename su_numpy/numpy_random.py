@@ -10,7 +10,9 @@ import numpy as np
 
 
 rand_array = np.random.rand(2, 3)
+rand_array_signal = np.random.rand()
 print '\033[32mrand_array:\033[0m', rand_array
+print '\033[32mrand_array_signal:\033[0m', rand_array_signal
 
 randn_array = np.random.randn(2, 3)
 print '\033[33mrandn_array:\033[0m', randn_array
