@@ -7,6 +7,9 @@
 
 
 
-import matplotlib as mlt
+import matplotlib.pyplot as plt
+
+
+
 
 
