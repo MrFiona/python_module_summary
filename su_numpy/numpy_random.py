@@ -47,6 +47,16 @@ random_sample_signal = np.random.random_sample()
 random_sample_array = np.random.random_sample((2, 3))
 print '\033[31mrandom_sample:\033[0m', random_sample_signal, random_sample_array
 
+#todo p表示出现的机率 如下列子是0,1,2,3,4概率分别是:0.1, 0.1, 0.3, 0.2, 0.3
+choice_array = np.random.choice(5, 4, p=[0.1, 0.1, 0.3, 0.2, 0.3])
+choice_array_1 = np.random.choice(['pooh', 'rabbit', 'piglet', 'Christopher'], 4, p=[0.3, 0.2, 0.3, 0.2])
+#todo replace为False表示不会出现重复的元素 默认True
+choice_array_2 = np.random.choice(5, 4, p=[0.1, 0.1, 0.3, 0.2, 0.3], replace=False)
+print '\033[32mchoice_array:\033[0m', choice_array
+print '\033[32mchoice_array_1:\033[0m', choice_array_1
+print '\033[32mchoice_array_2:\033[0m', choice_array_2
+
+
 
 
 
