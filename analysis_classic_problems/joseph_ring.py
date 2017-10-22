@@ -6,6 +6,8 @@
 # Software: PyCharm Community Edition
 
 
+#todo 约瑟夫环问题
+
 import time
 
 
