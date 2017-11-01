@@ -140,5 +140,70 @@ print 'np.ix_函数会产生一个索引器:', np.ix_([0,3,5],[0,2,3])
 #todo 可以通过调用数组的transpose函数或者T属性进行数组转置操作
 
 
+arr = np.random.randint(1,10, (1,2,3,4))
+print arr
+
+a = arr.shape[:-2] + (-1,)
+print a
+
+arr1 = arr.reshape(a)
+print arr1, arr1.shape
+
+print arr1.sum(axis=1)
 
 
+
+
+arr2 = np.array([
+    [[[1,1,1,1],
+      [2,2,2,2],
+      [3,3,3,3]
+     ],
+      [
+      [4,4,4,4],
+      [5,5,5,5],
+      [6,6,6,6]
+      ]
+    ]
+])
+
+arr3 = arr2.reshape((1,2,-1))
+print 'arr3:\t', arr3
+print('result:\t', arr3.sum(axis=2))
+
+"""
+分析：
+    输出1*2维度的数据，以3*4维度为单位则首先需要将3*4展开，即重塑数组为(2,12)形状
+    要输出1*2维度的结果数据，则需要对列数据进行求和，即对重塑后的数组执行sum(axis=1)
+"""
+
+
+array = np.zeros((10,10))
+
+array[0] = 1
+array[[0, 9]] = array[[9, 0]]
+array[0] = 1
+
+array.T[0] = 1
+array.T[[0, 9]] = array.T[[9, 0]]
+array.T[0] = 1
+print(array)
+
+
+from pandas import Series, DataFrame
+import pandas as pd
+
+pattern = r'[a-z][0-9]'
+s = pd.Series(['1', 'b2', '3a', '3b', 'c2c'])
+print s.str.contains(pattern)
+
+
+read_data =pd.read_csv('ca_list_copy(2).csv')
+# print read_data
+
+# print read_data.columns
+
+for col in read_data.columns:
+    print '%s:\t' % col, read_data[read_data[col] == 0]
+# print read_data[read_data['zwyx'] == 0]
+# print '1111:\t', read_data[read_data != 0]
