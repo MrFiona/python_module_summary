@@ -506,3 +506,9 @@ def combinations_with_replacement_2(iterable, r):
 import traceback
 
 traceback.extract_stack()
+
+
+result = itertools.combinations(range(20),3)
+n = list(result)
+print n
+print len(n)
