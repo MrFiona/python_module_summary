@@ -11,13 +11,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from operator import itemgetter
+from matplotlib.ticker import MultipleLocator
 
 #todo 设置中文字体
 mpl.rcParams['font.sans-serif'] = ['SimHei']
 
 df = pd.read_csv('ca_list_copy(2).csv')
-
-print df
 
 #todo zwyx列的平均值
 value = df['zwyx'].mean()
@@ -58,7 +57,7 @@ top_city_info_list = city_info_list[:10]
 
 fig, ax = plt.subplots()
 fig.set_facecolor('peru')
-plt.title(u'城市最高薪资对比图', fontsize=15, color='blue')
+# plt.title(u'城市最高薪资对比图', fontsize=15, color='blue')
 fig.set_size_inches(w=10, h=6)
 x = [ele[0] for ele in top_city_info_list]
 y = [str(ele[1]) for ele in top_city_info_list]
@@ -68,11 +67,15 @@ set_label(y)
 plt.ylabel(u'最高薪资', fontsize=15, color='m')
 plt.xlabel(u'城市', fontsize=15, color='b')
 
-
-x = [u'城市',u'城市',u'城市']
-print dir(ax)
+plt.axis([0, len(x)+1, eval(min(y)) - 2000, eval(max(y)) + 2000])
 
 plt.xticks(range(1, 12))
 ax.set_xticklabels(x,rotation=-45)
+
+plt.legend([u'10大城市最高薪资对比图'], loc='upper center', fontsize=14, facecolor='c', shadow=True)
+
+#todo y轴主刻度最小单位设为1
+ax.yaxis.set_major_locator( MultipleLocator(1500) )
+
 plt.grid(color='peru', linestyle='--')
 plt.show()
