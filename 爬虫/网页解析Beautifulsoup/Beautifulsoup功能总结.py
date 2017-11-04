@@ -134,7 +134,7 @@ print(soup.find_all("a", class_="sister3"))
 #     string_list = [ele for ele in string_list if len(ele)]
 #     print(string_list)
 
-#todo ****************************4、select()方法****************************
+#todo ****************************5、select()方法****************************
 
 #todo （1）通过标签名查找
 print('seclect:\t', soup.select('title'))
@@ -145,4 +145,4 @@ print(soup.select('#213123'))
 #todo （4）组合查找
 print(soup.select('p #link1'))
 
-#todo ****************************4、select()方法****************************
+#todo ****************************5、select()方法****************************
