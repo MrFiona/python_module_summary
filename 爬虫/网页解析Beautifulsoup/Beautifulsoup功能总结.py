@@ -16,7 +16,7 @@ html_doc = """
 <body>
 <p class="title" id="213123"><b>The Dormouse's story</b></p>
 <p class="story">Once upon a time there were three little sisters; and their names were
-<a href="http://example.com/elsie" class="sister1" id="link1">Elsie</a>,
+<a class="sister1" href="http://example.com/elsie" id="link1">Elsie</a>,
 <a href="http://example.com/lacie" class="sister2" id="link2">Lacie</a> and
 <a href="http://example.com/tillie" class="sister3" id="link3">Tillie</a>;
 and they lived at the bottom of a well.</p>
@@ -93,12 +93,14 @@ print(list(soup.strings))
 print(soup.string) #多个节点的情况下调用.string会导致 返回None
 #todo 输出的字符串中可能包含了很多空格或空行,使用 .stripped_strings 可以去除多余空白内容  全部是空格的行会被忽略掉,段首和段末的空白会被删除
 print(list(soup.stripped_strings))
+#todo 获取第一个title标签的对应内容
+print (soup.select('title')[0].get_text())
 print()
 
 #todo ****************************3、获取节点的字符串****************************
 
 
-#todo ****************************4、soup.find_all()方法****************************
+#todo ****************************4、find_all()方法****************************
 
 #find_all(self, name=None, attrs={}, recursive=True, text=None,limit=None, **kwargs)
 """
@@ -123,10 +125,7 @@ print(soup.find_all("a", limit=2))
 print(soup.find_all(["a", "b"]))
 print(soup.find_all("a", class_="sister3"))
 
-print(dir(soup.find_all))
-
-#todo ****************************4、soup.find_all()方法****************************
-
+#todo ****************************4、find_all()方法****************************
 
 # for tr in result:
 #     string_list = list(tr.strings)
@@ -134,3 +133,16 @@ print(dir(soup.find_all))
 #     string_list = [ele for ele in string_list if not ele.isspace()]
 #     string_list = [ele for ele in string_list if len(ele)]
 #     print(string_list)
+
+#todo ****************************4、select()方法****************************
+
+#todo （1）通过标签名查找
+print('seclect:\t', soup.select('title'))
+#todo （2）通过类名查找
+print(soup.select('.story'))
+#todo （3）通过 id 名查找
+print(soup.select('#213123'))
+#todo （4）组合查找
+print(soup.select('p #link1'))
+
+#todo ****************************4、select()方法****************************
