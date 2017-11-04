@@ -4,9 +4,9 @@ import http.cookiejar
 # 申明CookieJar对象
 cj = http.cookiejar.CookieJar()
 # 构建cookie处理
-hanler = urllib.request.HTTPCookieProcessor(cj)
-# hanler 来构建opener
-opener=urllib.request.build_opener(hanler)
+handler = urllib.request.HTTPCookieProcessor(cj)
+# handler 来构建opener
+opener=urllib.request.build_opener(handler)
 urllib.request.install_opener(opener)
 # open方法传入url
 response=opener.open('http://www.ibeifeng.com')
