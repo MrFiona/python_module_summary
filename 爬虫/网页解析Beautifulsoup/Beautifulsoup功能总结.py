@@ -124,6 +124,7 @@ print(soup.find_all(text=re.compile("Dormouse")))
 print(soup.find_all("a", limit=2))
 print(soup.find_all(["a", "b"]))
 print(soup.find_all("a", class_="sister3"))
+print()
 
 #todo ****************************4、find_all()方法****************************
 
@@ -135,14 +136,23 @@ print(soup.find_all("a", class_="sister3"))
 #     print(string_list)
 
 #todo ****************************5、select()方法****************************
+#todo CSS选择器   我们在写 CSS 时，标签名不加任何修饰，类名前加点，id名前加 #，在这里我们也可以利用类似的方法来筛选元素，用到的方法是 soup.select()，返回类型是 list
 
 #todo （1）通过标签名查找
 print('seclect:\t', soup.select('title'))
+
 #todo （2）通过类名查找
 print(soup.select('.story'))
+
 #todo （3）通过 id 名查找
 print(soup.select('#213123'))
+
 #todo （4）组合查找
 print(soup.select('p #link1'))
+#todo 直接子标签查找
+print(soup.select("head > title"))
+
+#todo （5）属性查找  查找时还可以加入属性元素，属性需要用中括号括起来，注意属性和标签属于同一节点，所以中间不能加空格，否则会无法匹配到
+print(soup.select('a[class="sister3"]'))
 
 #todo ****************************5、select()方法****************************
