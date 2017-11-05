@@ -59,5 +59,3 @@ print '\033[32mchoice_array_1:\033[0m', choice_array_1
 print '\033[32mchoice_array_2:\033[0m', choice_array_2
 
 
-
-
