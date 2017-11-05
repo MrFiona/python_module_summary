@@ -7,6 +7,8 @@
 
 
 from lxml import etree
+
+
 text = '''
 <div>
     <ul>
@@ -22,18 +24,11 @@ text = '''
 
 html = etree.HTML(text)
 # html = etree.parse(text)
-result = etree.tostring(html)
-print(result)
+# result = etree.tostring(html)
+# print(result)
 
-result = html.xpath('//li')
+result = html.xpath('//li//@href')
 print(result, type(result), len(result))
-
-for ele in result:
-    print(dir(ele))
-    print(ele.values)
 
 result = html.xpath('//li/@class')
 print(result, type(result), len(result))
-
-for ele in result:
-    print(ele)
