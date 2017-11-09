@@ -7,6 +7,7 @@
 
 
 import re
+import base64
 import time
 import requests
 from bs4 import BeautifulSoup
@@ -85,9 +86,43 @@ print(time.time() - start_time)
 
 
 # http://music.baidu.com/song/564102115#ucomment-bookmark
-response = requests.get('http://music.baidu.com/song/564102115#ucomment-bookmarkg')
+response = requests.get('http://music.baidu.com/data/tingapi/v1/restserver/ting?method=baidu.ting.ugccenter.checkFollRedPoint&timestamp=1510240696&param=Jl01hi8ZJCdwmF7J9nGiOqQdCY0uZfD8zFdsRJ20yKs%3D&sign=f543ca6171e2fa0b3298d74d1a0985d4&from=web')
 html = response.content.decode('utf-8')
-# print(html)
+print(html)
 
-soup = BeautifulSoup(html, 'html.parser')
-print(soup.select('div[class="message-list comment-list"]'))
+# soup = BeautifulSoup(html, 'html.parser')
+# print(soup.select('div[class="message-list comment-list"]'))
+
+
+
+# http://music.baidu.com/data/tingapi/v1/restserver/ting?method=baidu.ting.ugcmsg.getCommentListByType&timestamp=1510241175&param=Vge56N9wmSD5e3REyyWYn24tlOdefF3bG1pNLoXcV2PP0EZfT8eUb7IRRyuWUEnJn8eAtniHaN8uH5PD3KdnUA%3D%3D&sign=20c6b4c1c44b22322151b60daab2cafc&from=web
+# http://music.baidu.com/data/tingapi/v1/restserver/ting?method=baidu.ting.ugccenter.checkFollRedPoint&timestamp=1510240696&param=Jl01hi8ZJCdwmF7J9nGiOqQdCY0uZfD8zFdsRJ20yKs%3D&sign=f543ca6171e2fa0b3298d74d1a0985d4&from=web
+# http://music.baidu.com/data/tingapi/v1/restserver/ting?method=baidu.ting.ugcmsg.getCommentListByType&timestamp=1510241220&param=Jxgkj%2FAh1c0Ausa4UL6Mo54%2B8DRMhzEVumReqi9JCA65VMKTcWNtCN3tYMsRSnLclSiEqVTHZCz7qzgns097Wg%3D%3D&sign=f5f6cf5bd7e633f99497df3f53930f9e&from=web
+
+"""
+method:baidu.ting.ugccenter.checkFollRedPoint
+timestamp:1510240696
+param:Jl01hi8ZJCdwmF7J9nGiOqQdCY0uZfD8zFdsRJ20yKs=
+sign:f543ca6171e2fa0b3298d74d1a0985d4
+from:web
+
+method:baidu.ting.ugccenter.checkFollRedPoint
+timestamp:1510240696
+param:Jl01hi8ZJCdwmF7J9nGiOqQdCY0uZfD8zFdsRJ20yKs=
+sign:f543ca6171e2fa0b3298d74d1a0985d4
+from:web
+
+method:baidu.ting.ugcmsg.getCommentListByType
+timestamp:1510241636
+param:oM4x8MVI8C3qpiymJn9/XjZ0ebA7CXfrWuBTar9RwNf+Oqzc+m2RiwCPASctYXy0HmUlasxkTaQHZOzevU8ZwA==
+sign:3d4fee48e5325615431cffaa0d0dbbec
+from:web
+
+
+"""
+
+print(time.time())
+
+# 1510241963
+# 1510242028.5111773
+# 1510242052
