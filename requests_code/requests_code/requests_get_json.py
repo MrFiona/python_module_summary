@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 import requests
 r = requests.get("https://github.com/timeline.json", stream=True)
 print(r.text)#网页源码

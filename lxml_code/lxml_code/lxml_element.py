@@ -1,8 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Time    : 2017-11-05 22:20
+# Author  : MrFiona
+# File    : 豆瓣top250.py
+# Software: PyCharm Community Edition
+
 from lxml import etree
 import codecs
-file='demo1.xml'
+file_name='demo1.xml'
 #sel=etree.parse(file)#将xml解析为树结构
-root=etree.fromstring(open(file=file).read().encode('utf-8')) # 接收 byte string
+root=etree.fromstring(open(file_name).read().encode('utf-8')) # 接收 byte string
 print(root.tag) # 首节点节点
 print(root[0].tag)#第一个内节点
 article = root[0]
@@ -46,7 +53,7 @@ root.append( etree.Element('child4') )  # 尾部添加
 print(etree.tostring(root))
 
 #获取父节点
-print(child1.getparent().tag)
+# print(child1.getparent().tag)
 
 #属性操作
 #1.创建属性
