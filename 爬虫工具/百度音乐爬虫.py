@@ -36,10 +36,6 @@ for element in classify_label_list:
 
 # print(global_music_classify_label_info)
 
-df = pd.DataFrame([], columns=['date','aa', 'bb', 'cc'],index=[])
-new= pd.DataFrame({"aa":10,"bb":"b1","cc":20},index=[1])
-df = df.append(new)
-print(df)
 try:
     for classify in global_music_classify_label_info:
         try:
