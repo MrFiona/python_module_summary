@@ -20,6 +20,7 @@ def download_music(word):
     res1 = requests.get('https://c.y.qq.com/soso/fcgi-bin/client_search_cp?&t=0&aggr=1&cr=1&catZhida=1&lossless=0&flag_qc=0&p=1&n=20&w='+word)
     jm1 = json.loads(res1.text.strip('callback()[]'))
     jm1 = jm1['data']['song']['list']
+    print(jm1)
     mids = []
     songmids = []
     srcs = []
@@ -53,4 +54,4 @@ def download_music(word):
     print('For ['+word+'] Download complete '+str(x)+'files !')
 
 
-
+download_music('ww')
