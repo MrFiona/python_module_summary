@@ -135,6 +135,14 @@ print '获取第0、3、5行的第0、2、3列的数据:', array[np.ix_([0,3,5],
 #todo np.ix_函数会产生一个索引器
 print 'np.ix_函数会产生一个索引器:', np.ix_([0,3,5],[0,2,3])
 
+#todo argsort() 函数将数组的值从小到大排序后，并按照其相对应的索引值输出
+array = np.random.randint(1, 100, size=(2, 8))
+print array, array.shape
+#todo 按行排列
+print np.argsort(array, axis=1)
+#todo 按列排列
+print np.argsort(array, axis=0)
+
 #todo 数组的转置是指将shape进行重置操作，并将其值重置为原始shape元祖的倒置，比如原始的shape值为：(2,3,4),转置后的新元祖shape值为（4,3,2）
 #todo 对于二维数组而言(矩阵)数组的转置其实就是矩阵的的转置
 #todo 可以通过调用数组的transpose函数或者T属性进行数组转置操作
