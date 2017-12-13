@@ -76,8 +76,8 @@ print '\033[32mreshape_array_3:\033[0m', reshape_array_3
 
 b = np.array([[0, 1], [2, 3]])
 m = np.array([[0, 1], [2, 3]])
-b.resize((2,1))
-m.resize((2,3))
+b.resize(2,1)
+m.resize(2,3)
 print '\033[36mb:\033[0m', b
 print '\033[36mm:\033[0m', m
 
@@ -151,9 +151,6 @@ print arr1, arr1.shape
 
 print arr1.sum(axis=1)
 
-
-
-
 arr2 = np.array([
     [[[1,1,1,1],
       [2,2,2,2],
@@ -198,12 +195,12 @@ s = pd.Series(['1', 'b2', '3a', '3b', 'c2c'])
 print s.str.contains(pattern)
 
 
-read_data =pd.read_csv('ca_list_copy(2).csv')
+# read_data =pd.read_csv('ca_list_copy(2).csv')
 # print read_data
 
 # print read_data.columns
 
-for col in read_data.columns:
-    print '%s:\t' % col, read_data[read_data[col] == 0]
+# for col in read_data.columns:
+#     print '%s:\t' % col, read_data[read_data[col] == 0]
 # print read_data[read_data['zwyx'] == 0]
 # print '1111:\t', read_data[read_data != 0]
