@@ -51,3 +51,23 @@ print '将当前时间的小数秒转化为当前的epoch时间的字符串表�
 # print time.asctime(epoch_tuple_time)
 # print time.asctime(g)
 # print time.asctime(local_tuple_time)
+
+x = y = z = 1
+print float('inf') - 10000
+a =  b = ['123', 'rdgert']
+a.append('ggg')
+Q = q = '123'
+Q = 'rrr'
+print
+print 3>True+1
+g = frozenset('e23re12')
+print g
+print b
+print a
+print float('inf') - 1
+def addItem(listParam):
+    listParam += [1]
+mylist = [1, 2, 3, 4]
+addItem(mylist)
+print len(mylist)
+print mylist
