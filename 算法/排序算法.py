@@ -74,11 +74,13 @@ def merge_sort(num_list):
 大根堆的要求是每个节点的值都不大于其父节点的值，即A[PARENT[i]] >= A[i]。
 在数组的非降序排序中，需要使用的就是大根堆，因为根据大根堆的要求可知，最大的值一定在堆顶。
 """
+#http://blog.csdn.net/chibangyuxun/article/details/53018294 堆排序原理
 def MAX_Heapify(heap,HeapSize,root):#在堆中做结构调整使得父节点的值大于子节点
-
+    #一般用数组来表示堆，若根节点存在于序号0处，i结点的父结点下表就为（i-1）/2,i结点的左右子结点下标分别为2i+1和2i+2
     left = 2*root + 1
     right = left + 1
     larger = root
+    #这里是建立的大顶堆，最终的结果是升序排列，若为小顶堆则为降序排列
     if left < HeapSize and heap[larger] < heap[left]:
         larger = left
     if right < HeapSize and heap[larger] < heap[right]:
@@ -93,8 +95,10 @@ def Build_MAX_Heap(heap):#构造一个堆，将堆中所有数据重新排序
         MAX_Heapify(heap,HeapSize,i)
 
 def HeapSort(heap):#将根节点取出与最后一位做对调，对前面len-1个节点继续进行对调整过程。
+    #建立一个初始的堆结构，即每个根节点的值均大于子节点的值 因为此处建立的是大顶堆
     Build_MAX_Heap(heap)
     for i in range(len(heap)-1,-1,-1):
+        #将根节点与倒数第i个未被交换过值的节点交换值，将最大值放在最后，以此类推，次大值放在倒数第二个位置。。。。
         heap[0],heap[i] = heap[i],heap[0]
         MAX_Heapify(heap, i, 0)
     return heap
