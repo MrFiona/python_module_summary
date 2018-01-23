@@ -74,34 +74,33 @@ def merge_sort(num_list):
 大根堆的要求是每个节点的值都不大于其父节点的值，即A[PARENT[i]] >= A[i]。
 在数组的非降序排序中，需要使用的就是大根堆，因为根据大根堆的要求可知，最大的值一定在堆顶。
 """
-def adjust_heap(lists, i, size):
-    l_child = 2 * i + 1
-    r_child = 2 * i + 2
-    max = i
-    if i < size // 2:
-        if l_child < size and lists[l_child] > lists[max]:
-            max = l_child
-        if r_child < size and lists[r_child] > lists[max]:
-            max = r_child
-        if max != i:
-            lists[max], lists[i] = lists[i], lists[max]
-            adjust_heap(lists, max, size)
+def MAX_Heapify(heap,HeapSize,root):#在堆中做结构调整使得父节点的值大于子节点
 
+    left = 2*root + 1
+    right = left + 1
+    larger = root
+    if left < HeapSize and heap[larger] < heap[left]:
+        larger = left
+    if right < HeapSize and heap[larger] < heap[right]:
+        larger = right
+    if larger != root:#如果做了堆调整则larger的值等于左节点或者右节点的，这个时候做对调值操作
+        heap[larger],heap[root] = heap[root],heap[larger]
+        MAX_Heapify(heap, HeapSize, larger)
 
-def build_heap(lists, size):
-    for i in range(size // 2 - 1, -1, -1):
-        adjust_heap(lists, i, size)
+def Build_MAX_Heap(heap):#构造一个堆，将堆中所有数据重新排序
+    HeapSize = len(heap)#将堆的长度当独拿出来方便
+    for i in xrange((HeapSize -2)//2,-1,-1):#从后往前出数
+        MAX_Heapify(heap,HeapSize,i)
 
+def HeapSort(heap):#将根节点取出与最后一位做对调，对前面len-1个节点继续进行对调整过程。
+    Build_MAX_Heap(heap)
+    for i in range(len(heap)-1,-1,-1):
+        heap[0],heap[i] = heap[i],heap[0]
+        MAX_Heapify(heap, i, 0)
+    return heap
 
-def heap_sort(lists):
-    size = len(lists)
-    build_heap(lists, size)
-    for i in range(size - 1, -1, -1):
-        lists[0], lists[i] = lists[i], lists[0]
-        adjust_heap(lists, 0, i)
-
-# heap_sort(init_num)
-# print(init_num)
+HeapSort(init_num)
+print(init_num)
 
 """
 插入排序的基本操作就是将一个数据插入到已经排好序的有序数据中，从而得到一个新的、个数加一的有序数据，算法适用于少量数据的排序，
@@ -138,7 +137,7 @@ def bubble_sort(num_list):
                 num_list[i], num_list[j] = num_list[j], num_list[i]
     return num_list
 
-a = bubble_sort(init_num)
-print(a)
+# a = bubble_sort(init_num)
+# print(a)
 
 print time.time() - start
