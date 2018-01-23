@@ -9,72 +9,136 @@
 import time
 import numpy as np
 
+
 start = time.time()
-np.random.seed(10)
-random_num = np.random.randint(1, 1000, 2000)
-# print random_num, len(random_num)
-
-#todo 插入排序
-def insert_sort(random_num):
-    for index in xrange(1, len(random_num)):
-        key = random_num[index]
-        j = index - 1
-        while j >= 0:
-            if random_num[j] > key:
-                random_num[j+1] = random_num[j]
-                random_num[j] = key
-            j -= 1
-    print random_num
-    return random_num
-
-#todo 希尔排序
-def hill_sort(random_num):
-    pass
-
-#todo 冒泡排序
-def bubble_sort(random_num):
-    for i in xrange(len(random_num)):
-        for j in xrange(i+1, len(random_num)):
-            if random_num[i] > random_num[j]:
-                random_num[i], random_num[j] = random_num[j], random_num[i]
-    print random_num
-    return random_num
-
+np.random.seed(100)
+init_num = np.random.randint(1,500,100)
+print(init_num)
+"""
+通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，
+然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列
+"""
 #todo 快速排序
-def quick_sort(random_num, left, right):
+def quick_sort(init_num, left, right):
     if left >= right:
-        return random_num
-
+        return init_num
     low = left
     high = right
-    key = random_num[left]
+    key = init_num[left]
+    # print(left, init_num[left], init_num)
+    while left < right:
+        while left < right and init_num[right] >= key:
+            right -= 1
+        init_num[left] = init_num[right]
+        while left < right and init_num[left] <= key:
+            left += 1
+        init_num[right] = init_num[left]
+    init_num[right] = key
+    quick_sort(init_num, low, left-1)
+    quick_sort(init_num, left+1, high)
+    return init_num
 
-    while low < high:
-        #todo 右边的大于key则左移一位，当前值位置不变
-        while low < high and random_num[high] >= key:
-            high -= 1
-        #todo 右边的小于左边的则需要将当前值更新为left位置值
-        random_num[low] = random_num[high]
-        #todo 左边的小于key则右移一位
-        while low < high and random_num[low] <= key:
-            low += 1
-        #todo 左边的大于key则将当前位置值更新为右边位置为high的值
-        random_num[high] = random_num[low]
+# a = quick_sort(init_num, 0, len(init_num)-1)
+# print(a)
 
-    random_num[low] = key
+#todo 归并排序
+def merge(left, right):
+    index_l, index_r = 0, 0
+    result = []
+    while index_l < len(left) and index_r < len(right):
+        if left[index_l] <= right[index_r]:
+            result.append(left[index_l])
+            index_l += 1
+        else:
+            result.append(right[index_r])
+            index_r += 1
+    result.extend(left[index_l:]) if index_r == len(right) else result.extend(right[index_r:])
+    return result
 
-    quick_sort(random_num, left, low - 1)
-    quick_sort(random_num, low + 1, right)
-    # print random_num
-    return random_num
+def merge_sort(num_list):
+    if len(num_list) <= 1:
+        return num_list
+    num = len(num_list) // 2
+    left = merge_sort(num_list[:num])
+    right = merge_sort(num_list[num:])
+    return merge(left, right)
+
+# a = merge_sort(init_num)
+# print(a, len(a))
 
 
-# print 'insert_sort:\t', time.time() - start
-# insert_sort(random_num)
-# start = time.time()
-# bubble_sort(random_num)
-# print 'bubble_sort:\t', time.time() - start
-# start = time.time()
-print quick_sort(random_num, 0, len(random_num)-1)
+#todo 堆排序
+"""
+堆排序(Heapsort)是指利用堆积树（堆）这种数据结构所设计的一种排序算法，它是选择排序的一种。
+可以利用数组的特点快速定位指定索引的元素。堆分为大根堆和小根堆，是完全二叉树。
+大根堆的要求是每个节点的值都不大于其父节点的值，即A[PARENT[i]] >= A[i]。
+在数组的非降序排序中，需要使用的就是大根堆，因为根据大根堆的要求可知，最大的值一定在堆顶。
+"""
+def adjust_heap(lists, i, size):
+    l_child = 2 * i + 1
+    r_child = 2 * i + 2
+    max = i
+    if i < size // 2:
+        if l_child < size and lists[l_child] > lists[max]:
+            max = l_child
+        if r_child < size and lists[r_child] > lists[max]:
+            max = r_child
+        if max != i:
+            lists[max], lists[i] = lists[i], lists[max]
+            adjust_heap(lists, max, size)
+
+
+def build_heap(lists, size):
+    for i in range(size // 2 - 1, -1, -1):
+        adjust_heap(lists, i, size)
+
+
+def heap_sort(lists):
+    size = len(lists)
+    build_heap(lists, size)
+    for i in range(size - 1, -1, -1):
+        lists[0], lists[i] = lists[i], lists[0]
+        adjust_heap(lists, 0, i)
+
+# heap_sort(init_num)
+# print(init_num)
+
+"""
+插入排序的基本操作就是将一个数据插入到已经排好序的有序数据中，从而得到一个新的、个数加一的有序数据，算法适用于少量数据的排序，
+时间复杂度为O(n^2)。是稳定的排序方法。插入算法把要排序的数组分成两部分：第一部分包含了这个数组的所有元素，但将最后一个元素除外
+（让数组多一个空间才有插入的位置），而第二部分就只包含这一个元素（即待插入元素）。在第一部分排序完成后，再将这个最后元素插入到已排好序的第一部分中
+"""
+#todo 插入排序
+def insert_sort(num_list):
+   length = len(num_list)
+   for i in range(1, length):
+       key = num_list[i]
+       j = i-1
+       while j >= 0:
+           if num_list[j] > key:
+               num_list[j+1] = num_list[j]
+               num_list[j] = key
+           j -= 1
+   return num_list
+
+# a = insert_sort(num_list=init_num)
+# print(a)
+
+
+"""
+它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。
+走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成
+"""
+#todo 冒泡排序
+def bubble_sort(num_list):
+    length = len(num_list)
+    for i in range(0, length):
+        for j in range(i+1, length):
+            if num_list[i] >= num_list[j]:
+                num_list[i], num_list[j] = num_list[j], num_list[i]
+    return num_list
+
+a = bubble_sort(init_num)
+print(a)
 
 print time.time() - start
