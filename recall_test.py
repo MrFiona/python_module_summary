@@ -26,6 +26,8 @@ func(sys.argv)
 
 
 # http://blog.csdn.net/cnweike/article/details/73620250
+# http://blog.csdn.net/pugongying1988/article/details/54616797
+# http://blog.csdn.net/imzoer/article/details/8678029
 
 # import sys
 # import time
