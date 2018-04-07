@@ -18,7 +18,7 @@ import time
 
 
 array_num_list = [num for num in range(1, 101)]
-print array_num_list
+print(array_num_list)
 
 k = 0
 m = 5
@@ -37,7 +37,7 @@ while sum(array_num_list):
             k = 0
             temp = 0
             array_num_list[array_num_list.index(ele)] = 0
-            print '编号为 %d 的人出局:\t', ele
+            print('编号为 %d 的人出局:\t', ele)
             # print 'array_num_list:\t', array_num_list
 
-print time.time() - start
+print(time.time() - start)

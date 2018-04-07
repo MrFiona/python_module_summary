@@ -91,7 +91,7 @@ def MAX_Heapify(heap,HeapSize,root):#在堆中做结构调整使得父节点的�
 
 def Build_MAX_Heap(heap):#构造一个堆，将堆中所有数据重新排序
     HeapSize = len(heap)#将堆的长度当独拿出来方便
-    for i in xrange((HeapSize -2)//2,-1,-1):#从后往前出数
+    for i in range((HeapSize -2)//2,-1,-1):#从后往前出数
         MAX_Heapify(heap,HeapSize,i)
 
 def HeapSort(heap):#将根节点取出与最后一位做对调，对前面len-1个节点继续进行对调整过程。
@@ -144,4 +144,4 @@ def bubble_sort(num_list):
 # a = bubble_sort(init_num)
 # print(a)
 
-print time.time() - start
+print(time.time() - start)
