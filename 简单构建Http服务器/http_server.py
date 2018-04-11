@@ -7,10 +7,10 @@
 
 
 
-from io import StringIO
-from test_server import test
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from io import StringIO
 
+from 简单构建Http服务器.test_server import test
 
 
 class HttpServer(BaseHTTPRequestHandler):
